@@ -1,0 +1,27 @@
+server:
+  port: 8887
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://github.com/297467136/SpringcloudConfig/
+          searchPaths: respo
+          # 公共库 可以不写
+          username: your username
+          password: your password
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#management.endpoints.web.exposure.include="*"
+management:
+  endpoints:
+    bus-refresh:
+      enabled: true
+    web:
+      exposure:
+        include: bus-refresh

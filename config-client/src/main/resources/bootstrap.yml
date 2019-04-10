@@ -1,0 +1,30 @@
+server:
+  port: 8881
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        serviceId: config-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    bus-refresh:
+      enabled: true
+    web:
+      exposure:
+        include: bus-refresh
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#  spring.cloud.config.discovery.enabled 是从配置中心读取文件。
+#  spring.cloud.config.discovery.serviceId 配置中心的servieId，即服务名。
